@@ -1,0 +1,147 @@
+<meta charset="UTF-8">
+
+<h1>Lista de Programas:</h1>
+
+<h3>Por favor, digite o número referente ao programa que desejar:</h3>
+
+1 - IMC
+<br>
+2 - Jogo de advinhação de números
+<br>
+3 - Tabuada
+<br>
+4 - Anos em que acontecem Copa do Mudo
+
+<br>
+<br>
+
+<input>
+<button>Confirmar</button>
+
+<script>
+
+    // Script criado por Yuri Gabriel.
+    // Código com a finalidade de unificar atividades ensinadas em aula.
+    // Esse código dá ao usuário opções de programas com finalidas diferentes.
+    // Calculo de IMC (Índice de Massa Corporal).
+    // Jogo de advinhação com números aleatórios.
+    // Tabuada.
+    // E os anos em que foram e serão realizadas as Copas do Mundo.
+
+    // Início do bloco de funções.
+    function pulaLinha() {
+
+        document.write("<br>");
+        
+        // Função desenvolvida para pular uma linha no corpo do HTML.
+    }
+
+    function escreva(frase) {
+
+        document.write(frase);
+        pulaLinha();
+        
+        // Função desenvolvida para escrever e pular uma linha no corpo do HTML.
+    }
+
+    function verifica() {
+    // Função de seleção dos programas listados no corpo da página.
+
+        if(input.value == 1) {
+        // Início do programa de calculo do IMC.
+
+            alert("Você escolheu o programa de calculo IMC.");
+
+           nome = prompt("Qual é o seu nome? ");
+           altura = parseInt(prompt(nome + ", qual é a sua altura? "));
+           peso = parseInt(prompt(nome + ", qual é o seu peso? "))
+
+           var imc = peso / (altura * altura);
+
+           escreva(nome + ", seu IMC é: " + imc);
+
+           if(imc < 18.5) {
+
+                escreva(nome +", você está abaixo do recomendado.");
+
+           }else if(imc > 30) {
+
+                escreva(nome + ", você está acima do recomendado.");
+
+           }else if(imc >= 18.4 && imc <= 24.9) {
+
+            escreva(nome + ", seu IMC está excelente!");
+
+           }
+
+           escreva("Fim do programa!");
+
+        } else if(input.value == 2) {
+        // Início do jogo de advinhação com números.
+
+            alert("Você escolheu o jogo de advinhação com números.");
+
+            var numeroPensado = Math.round(Math.random() * 20);
+
+            var tentativa = "";
+            tentativa -1;
+
+            while(tentativa <= 3) {
+                var chute = parseInt(prompt("Qual o seu chute? "))
+
+                if(chute == numeroPensado) {
+                    escreva("Você ACERTOU!!!");
+                } else {
+                    escreva("Você errou, reinicie o programa e tente novamente!");
+                }
+
+                tentativa++
+            }
+
+            escreva("Fim do programa!");
+
+        } else if(input.value == 3) {
+        // Início do programa de tabuada.
+
+            alert("Você escolheu o programa de tabuada.");
+
+            var numeroMultiplicador = parseInt(prompt("De qual número você quer saber a tabuada? "));
+
+            escreva("Aqui está a tabuada de " + numeroMultiplicador);
+
+            for  (var multiplicador = 1; multiplicador <= 10; multiplicador++) {
+
+                escreva(numeroMultiplicador * multiplicador);
+            }
+            escreva("Fim do programa!");
+
+        } else if(input.value == 4) {
+        // Início do programa de Copa do Mundo.
+
+            alert("Você escolheu o programa para saber quando acontecerá as próximas Copas do Mundo.")
+
+            var todasCopas = (parseInt(prompt("Até que ano você quer calcular as Copas do Mundo? ")));
+            var anoCopa = 1930;
+
+            escreva("As Copas do Mundo até " + todasCopas + " são as seguintes:");
+
+            while(anoCopa <= todasCopas) {
+
+                escreva(anoCopa);
+                anoCopa = anoCopa + 4;
+            }
+            escreva("Fim do programa!");
+        }
+
+    }
+    //  Fim do bloco de funções.
+
+    var input = document.querySelector("input");
+	input.focus();
+
+    var button = document.querySelector("button");
+    button.onclick = verifica;
+
+    
+
+</script>
