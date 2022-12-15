@@ -1,0 +1,123 @@
+Curso Git e GitHub:
+
+01.O QUE É GIT?
+
+
+06 - Repositórios
+Comandos:
+	git init // Iniciar um novo repositório em um direitório
+
+
+07 - Branch principal
+Anotações:
+	Atenção! Atualmente não utilizamos mais o termo master como repositorio principal, e sim main, sendo esse é o novo padrão do GitHub desde o fim de 2020. Essa nomenclatura é mais inclusiva e facilita o entendimento entre pessoas desenvolvedoras.
+
+08 - Quem é você
+Antes de qualquer interação com o git, você precisa informar quem é você para que ele armazene corretamente os dados do autor de cada uma das alterações no código.
+No vídeo eu não fiz isso pois o git já estava configurado na máquina, mas para você fazer isso na sua, caso esteja começando a utilizar o git agora, basta digitar os seguintes comandos (estando na pasta do repositório git):
+Comandos: 
+	git config --local user.name "Seu nome aqui"
+	git config --local user.email "seu@email.aqui"
+
+02.INICIANDO OS TRABALHOS
+
+01 - Salvando as alterações
+Comandos:
+	git add index.html // Comando para adicionar arquivos para a área de preparação para envio. Nesse caso o "index.html" está sendo usado de exemplo.
+	git add . // Nesse caso o git seleciona todos os arquivos de um repositório.
+	git commit -m "Criando arquivo index.html e arquivo de anotação" // Nesse comando é feito o commit dos arquivos preparados e os caracteres "-m" adicionam a opção de mensagem descritiva
+
+02 - Para saber mais: git status:
+HEAD: Estado atual do nosso código, ou seja, onde o Git os colocou
+Working tree: Local onde os arquivos realmente estão sendo armazenados e editados
+index: Local onde o Git armazena o que será commitado, ou seja, o local entre a working tree e o repositório Git em si.
+Além disso, os possíveis estados dos nossos arquivos são explicados com detalhes neste link: https://git-scm.com/book/pt-br/v2/Fundamentos-de-Git-Gravando-Altera%C3%A7%C3%B5es-em-Seu-Reposit%C3%B3rio.
+OBS: Caso queira usar a configuração não só para um projeto, mas para a maquina inteira, basta usar o comando "git config --global"
+
+03 - Vendo o histórico
+Comandos: 
+	git log // Exibe o histórico de alterações feitas no repositírio.
+	git log --oneline // Exibe as alterações em apenas uma linha cada.
+	git log -p // Exibe as alterações dos commits feitos.
+Para maiores informações de formatos e possibilidades por linhas de código, acesse o endereço abaixo:
+	https://devhints.io/git-log
+
+06 - Ignorando arquivos
+Para que o git ignore arquivos específicos, basta criar o arquivo .gitignore e neste arquivo, descrever os nomes dos arquivos que devem ser ignorados pelo git. Lembrando que para que o git reconheça o gitignore, é necessário fazer o commit também.
+OBS: Nunca commitar códigos incompletos ou com algum problema de funcionamento.
+
+03.COMPARTILHANDO O TRBALHO
+
+01 - Repositórios remotos
+Comandos:
+	git init --bare // Transforma a pasta onde se encontra em um servidor remoto, um local de armazenamento.
+	git remote add nome-do-repositorio C:/Endereço-do-Repositorio-Remoto // Adiciona a pasta HEAD o repositório criado como remoto
+	git remote // lista os repositórios remotos criados nesse local
+	git remote -v // Mostra o caminho dos servidores listados.
+	git clone endereco-do-repositorio // Clona um repositório.
+
+
+04.TRABALHANDO EM EQUIPE
+
+01 - Branches
+Comandos:
+	git push local master // Para sincronizar os dados do repositório HEAD com o repositório local é necessário fazer o push, informando para qual repositório os dados vão (no caso criamos um repositório chamado local) e para qual brench, no caso a master.
+	git pull // pega dados de um repositório remoto e puxa.
+	git branch // mostra os branchs existentes no repositório.
+	git branch titulo // adiciona um novo branch de trabalho ao repositório ("titulo" está sendo usado apenas de exemplo para nome de branch).
+	git branch titulo // muda para um branch específico.
+	git checkout main // volta para algum branch específico.
+	git checkout -b lista // cria uma branch e vai para ela ao mesmo tempo.
+
+03 - Unindo o trabalho
+Comandos:
+	git merge lista // une as branches existens em uma só.
+
+05 - Atualizando a branch
+Comandos:
+	git rebase titulo // traz todos os commits que existiam nas branches base de uma branch de trabalho separada para a branch main.
+	git log --graph // mostra o histórico de commits em um modo gráfico.
+
+
+
+Site:
+	Entendendo o git de uma forma visual: https://git-school.github.io/visualizing-git/
+
+05.MANIPULANDO AS VERSÕES
+
+01 - Ctrl + Z no Git
+Comandos:
+	git checkout -- index.html // O "git checkout" também serve como uma forma de navegar por estados de um ou mais arquivos de um repositório. É possível desfazer a modificação de um arquivo utiliazndo o o git checkout.
+	git reset HEAD index.html // O git faz o arquivo que já está add para commit voltar pra o estado anterior de trabalho.
+	git revert hash-de-commit // Dezfaz um commit já realizado.
+	git stash // salva o estado de trabalho atual sem ter que commitar.
+	git stash lista // Exibe todos os estados de trabalhos salvos.
+	git stash apply // Aplica as modificações de uma stash.
+	git stash drop // estados de trabalhos salvos.
+	git stash pop 0 // remove um estado de trabalho e aplica no HEAD atual.
+
+
+06.GERANDO ENTREGAS
+
+01 - Vendo as alterações
+Comandos:
+	git diff ea539b3..6ca12ac // Esse comando exibe as alterações de dois estados de trabalho ou as diferenças entre dois commits como nesse exemplo, onde "ea539b3" significa um commit especíifico, ".." significa "até" e "6ca12ac" signfica o começo da hash de outro commit.
+
+03 - Tags e releases
+Comandos:
+	git tag -a -m "Fim do curso de git" fim-das-anotacoes // Adiciona um ponto de fim de versão a um estado.
+
+
+Exemplo de push para repositório remoto:
+	git remote add origin https://github.com/yurigabr25/ONE-Next-Education-T4.git
+	git branch -M main
+	git push -u origin main	
+
+
+
+
+
+
+
+
+
